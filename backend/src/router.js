@@ -1,9 +1,9 @@
 const express = require("express");
 
+const tasksController = require("./controllers/taskController");
+
 const router = express.Router();
 
-// router.get("/tasks", (req, res) =>
-//   res.status(200).send("O router está funcionando!")
-// );
+router.get("/tasks", tasksController.getAll);
 
 module.exports = router;

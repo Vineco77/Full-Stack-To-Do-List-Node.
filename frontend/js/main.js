@@ -11,13 +11,17 @@ const fetchTasks = async () => {
 const addTask = async (event) => {
   event.preventDefault();
 
-  const task = { title: inputTask.value };
+  if (inputTask.value === "") {
+    alert("Escreva o nome da Task antes de adicionar");
+  } else {
+    const task = { title: inputTask.value };
 
-  await fetch("http://localhost:3333/tasks", {
-    method: "post",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(task),
-  });
+    await fetch("http://localhost:3333/tasks", {
+      method: "post",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(task),
+    });
+  }
 
   loadTasks();
   inputTask.value = "";
